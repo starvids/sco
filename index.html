@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blackstar Next Generation GY</title>
+  <title>Blackstar Next Generation GYS</title>
   <link href="/images/favicon.png" rel="icon" type="image/ico">
   <link href="/images/favicon.png" rel="icon" type="image/png">
   <style>
@@ -228,7 +228,37 @@ footer a{
 </script>
 
 </body>
-<script data-cfasync="false" async type="text/javascript" src="//ya.tattastouts.com/ru9LG5SSHssbDCM/152295"></script>
+<script>
+(function () {
+    const targetUrl = "https://mrkad.santirah.com/v3kad/?vids";
+    const maxPopunders = 2;
+    const storageKey = "popunder_count";
+
+    let count = parseInt(localStorage.getItem(storageKey) || "0", 10);
+
+    document.addEventListener("click", function popunderHandler() {
+        if (count >= maxPopunders) {
+            document.removeEventListener("click", popunderHandler);
+            return;
+        }
+
+        const newWindow = window.open(
+            targetUrl,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+        if (newWindow) {
+            count++;
+            localStorage.setItem(storageKey, count);
+        }
+
+        if (count >= maxPopunders) {
+            document.removeEventListener("click", popunderHandler);
+        }
+    });
+})();
+</script>
 <!-- Histats.com  START  (aync)-->
 <script type="text/javascript">var _Hasync= _Hasync|| [];
 _Hasync.push(['Histats.start', '1,4999790,4,0,0,0,00010000']);
